@@ -5,7 +5,7 @@ import { Button } from "../components/Button"
 import { WarningAtEnd } from "../components/WarningAtEnd"
 import { useState } from "react"
 import axios from 'axios'
-import { Link, useNavigate } from "react-router-dom"
+import {useNavigate } from "react-router-dom"
 
 export function Signin() {
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ export function Signin() {
                 <Input onChange={(e) => {
                     setUsername(e.target.value);
                 }} label={"Email"} placeholder={"mukulbhatia@example.com"} />
-                <Input onChange={(e) => {
+                <Input onChange={(e) => {   
                     setPassword(e.target.value);
                 }} label={"Password"}   />
                 <Button onClick={async() => {
@@ -36,7 +36,6 @@ export function Signin() {
                             console.log(error);
                             console.log(error.response.data.message);
                         })
-
                 }} text="Sign In" />
                 <WarningAtEnd text="Don't have an account?" to="/signup" linkText="Sign Up"/>   
             </div>

@@ -14,8 +14,8 @@ export function Signup() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     return (
-        <div className="bg-slate-500 h-screen flex justify-center items-center">
-            <div className="rounded-lg bg-white px-7 py-10 flex flex-col gap-4">
+        <div className="bg-slate-500 flex justify-center items-center">
+            <div className="rounded-lg bg-white px-7 py-10 my-5 flex flex-col gap-4">
                 <Heading text={"Sign Up"} />
                 <SubHeading text={"Enter your information to create an account"} />
                 <Input onChange={(e) => {
@@ -40,6 +40,7 @@ export function Signup() {
                     .then(response => {
                         console.log("message: ", response.data.message);
                         console.log("token: ", response.data.token);
+                        localStorage.setItem("token", `Bearer ${response.data.token}`);
                         navigate('/dashboard');
                     })
                     .catch(error => {
