@@ -4,9 +4,9 @@ export function UserSendMoneyCard({ user }) {
         <div className="flex flex-col sm:flex-row justify-between items-center my-5">
             <div className="flex gap-2 justify-center items-center">
                 <div className="rounded-full flex justify-center items-center w-8 h-8 bg-slate-400 text-lg">{user.firstName[0].toUpperCase()}</div>
-                <div className="font-bold text-2xl">{user.firstName} {user.lastName}</div>
+                <div className="font-bold rext-xl sm:text-2xl">{user.firstName} {user.lastName}</div>
             </div>
-            <SendMoneyBtn />
+            <SendMoneyBtn user={user} />
         </div>
     )
 }

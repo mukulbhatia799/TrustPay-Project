@@ -16,7 +16,7 @@ export function UserSearchAndDisplay() {
     return (
         <div className="px-10">
             <div className="flex flex-col gap-4">
-                <div className="font-bold text-2xl">Users</div>
+                <div className="font-bold text-xl sm:text-2xl">Users</div>
                 <input onChange={(e) => {
                     setFilter(e.target.value);
                 }} className="rounded border font-medium border-black w-full py-2 px-3" placeholder="Search users..." />
