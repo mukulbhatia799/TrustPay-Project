@@ -89,7 +89,7 @@ router.post("/signin", async (req, res) => {
 
 
     res.status(411).json({
-        message: "Error while logging in"
+        message: "User not found!"
     })
 })
 
@@ -122,11 +122,13 @@ router.get("/bulk", async (req, res) => {
     const users = await User.find({
         $or: [{
             firstName: {
-                "$regex": filter
+                "$regex": filter,
+                "$options": "i"
             }
         }, {
             lastName: {
-                "$regex": filter
+                "$regex": filter,
+                "$options": "i"
             }
         }]
     })
