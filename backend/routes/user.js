@@ -1,55 +1,144 @@
+// backend/routes/user.js
 const express = require('express');
-const jwt = require('jsonwebtoken');
-const zod = require('zod');
-
-import {User} from '../db.js'
-
-const validate = zod.object({
-    username: zod.string(),
-    password: zod.string(),
-    firstname: zod.string(),
-    lastname: zod.string()
-})
 
 const router = express.Router();
+const zod = require("zod");
+const { User, Account } = require("../db");
+const jwt = require("jsonwebtoken");
+const { JWT_SECRET } = require("../config");
+const { authMiddleware } = require("../middleware");
 
-router.use(express.json());
+const signupBody = zod.object({
+    username: zod.string().email(),
+    firstName: zod.string(),
+    lastName: zod.string(),
+    password: zod.string()
+})
 
-router.post('/signup', async (req, res) => {
-    const {success} = validate.safeParse(req.body);
-
-    if(!success) {
-        return res.status(411).json({error: "input is incorrect"});
+router.post("/signup", async (req, res) => {
+    const { success } = signupBody.safeParse(req.body)
+    if (!success) {
+        return res.status(411).json({
+            message: "Incorrect inputs"
+        })
     }
 
-    // check username exists or not as it should be unique
-    const checkUserExists = await User.findOne({
-        username: req.body
+    const existingUser = await User.findOne({
+        username: req.body.username
     })
 
-    if(checkUserExists) {
-        return res.status(411).json({error: "username already exists."})
+    if (existingUser) {
+        return res.status(411).json({
+            message: "Email already taken"
+        })
     }
 
-    const user = User.create({
+    const user = await User.create({
         username: req.body.username,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        password: req.body.password
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
     })
-    const newuserID = user._id;
+    const userId = user._id;
+
+    await Account.create({
+        userId,
+        balance: 1 + Math.random() * 10000
+    })
+
     const token = jwt.sign({
-        newuserID
+        userId
     }, JWT_SECRET);
 
-    res.status(200).json({
+    res.json({
         message: "User created successfully",
         token: token
     })
 })
 
-router.post('/signin', (req, res) => {
-    
+
+const signinBody = zod.object({
+    username: zod.string().email(),
+    password: zod.string()
+})
+
+router.post("/signin", async (req, res) => {
+    const { success } = signinBody.safeParse(req.body)
+    if (!success) {
+        return res.status(411).json({
+            message: "Incorrect inputs"
+        })
+    }
+
+    const user = await User.findOne({
+        username: req.body.username,
+        password: req.body.password
+    });
+
+    if (user) {
+        const token = jwt.sign({
+            userId: user._id
+        }, JWT_SECRET);
+
+        res.json({
+            token: token,
+            message: "You just signed in!, when signed in token is again given to the user."
+        })
+        return;
+    }
+
+
+    res.status(411).json({
+        message: "Error while logging in"
+    })
+})
+
+const updateBody = zod.object({
+    password: zod.string().optional(),
+    firstName: zod.string().optional(),
+    lastName: zod.string().optional(),
+})
+
+router.put("/", authMiddleware, async (req, res) => {
+    const { success } = updateBody.safeParse(req.body)
+    if (!success) {
+        res.status(411).json({
+            message: "Error while updating information"
+        })
+    }
+
+    await User.updateOne(req.body, {
+        id: req.userId
+    })
+
+    res.json({
+        message: "Updated successfully"
+    })
+})
+
+router.get("/bulk", async (req, res) => {
+    const filter = req.query.filter || "";
+
+    const users = await User.find({
+        $or: [{
+            firstName: {
+                "$regex": filter
+            }
+        }, {
+            lastName: {
+                "$regex": filter
+            }
+        }]
+    })
+
+    res.json({
+        user: users.map(user => ({
+            username: user.username,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            _id: user._id
+        }))
+    })
 })
 
 module.exports = router;

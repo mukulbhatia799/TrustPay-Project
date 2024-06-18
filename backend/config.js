@@ -1,10 +1,4 @@
-const JWT_SECRET = "mukul123mukul";
-
-module.exports = JWT_SECRET;
-
-// or we can directly send it.
-/*
+//backend/config.js
 module.exports = {
-    JWT_SECRET = "mukul123mukul"
+	JWT_SECRET: "mukul Secret"
 }
-*/
