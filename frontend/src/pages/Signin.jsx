@@ -5,7 +5,9 @@ import { Button } from "../components/Button"
 import { WarningAtEnd } from "../components/WarningAtEnd"
 import { useState } from "react"
 import axios from 'axios'
-import {useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { IoIosArrowRoundBack } from "react-icons/io";
+
 
 export function Signin() {
     const navigate = useNavigate();
@@ -14,15 +16,18 @@ export function Signin() {
     return (
         <div className="bg-slate-500 h-screen flex justify-center items-center">
             <div className="rounded-lg bg-white px-5 py-10 flex flex-col gap-4">
+                <button onClick={() => {
+                    navigate(-1);
+                }}>{<IoIosArrowRoundBack size={30} />}</button>
                 <Heading text={"Sign In"} />
                 <SubHeading text={"Enter your credentials to access your account"} />
                 <Input onChange={(e) => {
                     setUsername(e.target.value);
                 }} label={"Email"} placeholder={"mukulbhatia@example.com"} />
-                <Input onChange={(e) => {   
+                <Input onChange={(e) => {
                     setPassword(e.target.value);
-                }} label={"Password"}   />
-                <Button onClick={async() => {
+                }} label={"Password"} />
+                <Button onClick={async () => {
                     await axios.post("http://localhost:3000/api/v1/user/signin", {
                         username,
                         password
@@ -37,7 +42,7 @@ export function Signin() {
                             console.log(error.response.data.message);
                         })
                 }} text="Sign In" />
-                <WarningAtEnd text="Don't have an account?" to="/signup" linkText="Sign Up"/>   
+                <WarningAtEnd text="Don't have an account?" to="/signup" linkText="Sign Up" />
             </div>
         </div>
     )

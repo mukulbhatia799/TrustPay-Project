@@ -5,7 +5,9 @@ import { Button } from "../components/Button"
 import { WarningAtEnd } from "../components/WarningAtEnd"
 import { useState } from "react"
 import axios from 'axios'
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { IoIosArrowRoundBack } from "react-icons/io"
+import logo from '../images/main-logo.png'
 
 export function Signup() {
     const navigate = useNavigate();
@@ -14,8 +16,12 @@ export function Signup() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     return (
-        <div className="bg-slate-500 h-screen flex justify-center items-center">
+        <div className="bg-slate-100 h-full flex justify-center items-center">
             <div className="rounded-lg bg-white px-7 py-10 my-5 flex flex-col gap-4">
+                <button onClick={() => {
+                    navigate(-1);
+                }}>{<IoIosArrowRoundBack size={30} />}</button>
+                <img src={logo} alt="trust pay logo" width="400px" />
                 <Heading text={"Sign Up"} />
                 <SubHeading text={"Enter your information to create an account"} />
                 <Input onChange={(e) => {
@@ -37,17 +43,17 @@ export function Signup() {
                         username,
                         password
                     })
-                    .then(response => {
-                        console.log("message: ", response.data.message);
-                        console.log("token: ", response.data.token);
-                        localStorage.setItem("token", `Bearer ${response.data.token}`);
-                        navigate('/dashboard');
-                    })
-                    .catch(error => {
-                        console.log("error occured: ", error.response.data.message);
-                    })
+                        .then(response => {
+                            console.log("message: ", response.data.message);
+                            console.log("token: ", response.data.token);
+                            localStorage.setItem("token", `Bearer ${response.data.token}`);
+                            navigate('/dashboard');
+                        })
+                        .catch(error => {
+                            console.log("error occured: ", error.response.data.message);
+                        })
                 }} text="Sign Up" />
-                <WarningAtEnd text="Already have an account?" to="/signin" linkText="login" />  
+                <WarningAtEnd text="Already have an account?" to="/signin" linkText="login" />
             </div>
         </div>
     )
