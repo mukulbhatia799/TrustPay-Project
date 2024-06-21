@@ -12,14 +12,15 @@ const signupBody = zod.object({
     username: zod.string().email(),
     firstName: zod.string(),
     lastName: zod.string(),
-    password: zod.string()
+    password: zod.string().min(6, "password length should be atleast 8 characters.")
 })
 
 router.post("/signup", async (req, res) => {
-    const { success } = signupBody.safeParse(req.body)
-    if (!success) {
-        return res.status(411).json({
-            message: "Incorrect inputs"
+    const response = signupBody.safeParse(req.body)
+    if (!response.success) {
+        // console.log(response.error.message);
+        return res.status(411).json({ 
+            message: JSON.stringify(response.error.issues)
         })
     }
 
@@ -33,27 +34,32 @@ router.post("/signup", async (req, res) => {
         })
     }
 
-    const user = await User.create({
-        username: req.body.username,
-        password: req.body.password,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-    })
-    const userId = user._id;
+    try {
+        const user = await User.create({
+            username: req.body.username,
+            password: req.body.password,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+        })
+        const userId = user._id;
 
-    await Account.create({
-        userId,
-        balance: 1 + Math.random() * 10000
-    })
+        await Account.create({
+            userId,
+            balance: 1 + Math.random() * 10000
+        })
 
-    const token = jwt.sign({
-        userId
-    }, JWT_SECRET);
+        const token = jwt.sign({
+            userId
+        }, JWT_SECRET);
 
-    res.json({
-        message: "User created successfully",
-        token: token
-    })
+        res.json({
+            message: "User created successfully",
+            token: token
+        })
+    }catch(error) {
+        console.log("errr:", error);
+        res.json({messagee: "error occured", errorName: error.name});
+    }
 })
 
 

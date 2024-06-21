@@ -1,5 +1,6 @@
 // backend/db.js
 const mongoose = require('mongoose');
+const express = require('express')
 
 mongoose.connect("mongodb+srv://mukulbhatia189:mukulbhatia189@cluster0.zg7kjju.mongodb.net/")
 
@@ -32,6 +33,7 @@ const userSchema = new mongoose.Schema({
         maxLength: 50
     }
 });
+const User = mongoose.model('User', userSchema);
 
 const accountSchema = new mongoose.Schema({
     userId: {
@@ -44,11 +46,9 @@ const accountSchema = new mongoose.Schema({
         required: true
     }
 });
-
 const Account = mongoose.model('Account', accountSchema);
-const User = mongoose.model('User', userSchema);
 
 module.exports = {
-	User,
+    User,
     Account
 };
