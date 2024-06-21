@@ -26,7 +26,22 @@ import payWhileShoppingImg from './images/pay-while-shopping.avif'
 import posBillingImg from './images/pos-billing-software.webp'
 import advertiseBusinessImg from './images/advertise-business.avif'
 import khataBookImg from './images/khata-book.jpg'
-import businessAppImg from './images/business-app.jpg'
+
+import bullStocksImg from './images/bull-stocks.webp'
+import IpoImg from './images/ipo-img.webp'
+import InvestInETFsImg from './images/invest-in-ETFs.webp'
+import buyGoldImg from './images/buy-gold.webp'
+import InvestInMutalFundsImg from './images/invest-in-mutual-funds.webp'
+import welcomeFlightCouponImg from './images/welcome-flight-coupon.webp'
+import RefundCancellationProtectImg from './images/refund-cancellation-protect.webp'
+import happyBusCouponImg from './images/happybus-coupon.webp'
+import protectionSanitizedBusImg from './images/protection-sanitized-bus.webp'
+import trainTicketBookingsImg from './images/train-ticket-bookings.webp'
+import pnrStatusCheckImg from './images/pnr-status.webp'
+
+
+
+
 
 
 const servicesState = [
@@ -151,50 +166,50 @@ const longCard = [
 
 const investcard = [
     {
-        imgURL: "https://assetscdn1.paytm.com/images/catalog/view_item/728894/1618576143299.png",
+        imgURL: bullStocksImg,
         heading: "Invest in Stocks"
     },
     {
-        imgURL: "https://assetscdn1.paytm.com/images/catalog/view_item/728895/1618575899205.png",
+        imgURL: IpoImg,
         heading: "Apply for IPO"
     },
     {
-        imgURL: "https://assetscdn1.paytm.com/images/catalog/view_item/800760/1618831809222.png",
+        imgURL: InvestInETFsImg,
         heading: "Invest in ETFs"
     },
     {
-        imgURL: "https://assetscdn1.paytm.com/images/catalog/view_item/728896/1618575990183.png",
+        imgURL: buyGoldImg,
         heading: "Buy Gold"
     },
     {
-        imgURL: "https://assetscdn1.paytm.com/images/catalog/view_item/728899/1618576408440.png",
+        imgURL: InvestInMutalFundsImg,
         heading: "Invest in Mutual Funds"
     },
 ];
 
 const offercard = [
     {
-        imgURL: "https://assetscdn1.paytm.com/images/catalog/view_item/863734/1627552693557.png",
+        imgURL: welcomeFlightCouponImg,
         heading: "Flat 14% Cashback With Code WELCOMEFLIGHT"
     },
     {
-        imgURL: "https://assetscdn1.paytm.com/images/catalog/view_item/864144/1627566096011.png",
-        heading: "100% Refund With Paytm's Cancellation Protect"
+        imgURL: RefundCancellationProtectImg,
+        heading: "100% Refund With TrustPay's Cancellation Protect"
     },
     {
-        imgURL: "https://assetscdn1.paytm.com/images/catalog/view_item/864145/1627566172335.png",
+        imgURL: happyBusCouponImg,
         heading: "Flat 10% Cashback With Code HAPPYBUS"
     },
     {
-        imgURL: "https://assetscdn1.paytm.com/images/catalog/view_item/864151/1627567062180.png",
+        imgURL: protectionSanitizedBusImg,
         heading: "Sanitised Bus Options With TravelSafe+"
     },
     {
-        imgURL: "https://assetscdn1.paytm.com/images/catalog/view_item/864152/1627566492097.png",
+        imgURL: trainTicketBookingsImg,
         heading: "Hassle Free Train Ticket Bookings"
     },
     {
-        imgURL: "https://assetscdn1.paytm.com/images/catalog/view_item/864153/1627566396231.png",
+        imgURL: pnrStatusCheckImg,
         heading: "PNR Status Check In Few Simple Clicks"
     },
 ];
