@@ -24,6 +24,7 @@ import paymentSuccessfulImg from './images/paid-successfully-250.webp'
 import payWhileShoppingImg from './images/pay-while-shopping.avif'
 
 import posBillingImg from './images/pos-billing-software.webp'
+import businessAppImg from './images/business-app.jpg'
 import advertiseBusinessImg from './images/advertise-business.avif'
 import khataBookImg from './images/khata-book.jpg'
 
