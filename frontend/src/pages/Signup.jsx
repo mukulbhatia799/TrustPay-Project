@@ -15,6 +15,7 @@ export function Signup() {
     const [lastName, setLastName] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [emailWarning, setEmailWarning] = useState("");
     return (
         <div className="bg-white h-full flex justify-center items-center">
             <div className="border-4 rounded-lg bg-white px-7 py-10 my-5 flex flex-col gap-4">
@@ -32,7 +33,7 @@ export function Signup() {
                 }} label={"Last Name"} placeholder={"Bhatia"} />
                 <Input onChange={(e) => {
                     setUsername(e.target.value);
-                }} label={"Email"} placeholder={"mukulbhatia@example.com"} />
+                }} label={"Email"} placeholder={"mukulbhatia@example.com"} emailWarning={emailWarning}/>
                 <Input onChange={(e) => {
                     setPassword(e.target.value);
                 }} label={"Password"} />
@@ -44,12 +45,14 @@ export function Signup() {
                         password
                     })
                         .then(response => {
+                            setEmailWarning("");
                             console.log("message: ", response.data.message);
                             console.log("token: ", response.data.token);
                             localStorage.setItem("token", `Bearer ${response.data.token}`);
                             navigate('/dashboard');
                         })
                         .catch(error => {
+                            setEmailWarning("Email already taken");
                             console.log("error occured: ", error.response.data.message);
                         })
                 }} text="Sign Up" />
