@@ -13,7 +13,7 @@ function Section1() {
             <div className="message">
                 <p><span className='text-bold'>No Wallet KYC Required</span></p>
                 <span className='emoji'>😊</span>
-                <p>to pay using UPI on TrustPay. <a href="#" className="text-bold">Learn more.</a></p>
+                <p>to pay using UPI on TrustPay. <a href="#" className="text-bold hover:underline">Learn more.</a></p>
             </div>
 
             <div className="section1-container">

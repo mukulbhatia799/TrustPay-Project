@@ -6,6 +6,7 @@
 .section6-wrapper > h1{
     margin-inline: auto;
     margin-block-start: 6rem;
+    margin-bottom: 50px;
     width: 62.5%;
 
     text-align: start;

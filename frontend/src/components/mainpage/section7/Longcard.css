@@ -2,6 +2,7 @@
     /* border: 1px solid blue; */
     padding-inline: 1rem;
     border-radius: 20px;
+    margin-top: 60px;
 }
 
 .longcard-image img {
@@ -14,10 +15,6 @@
 }
 
 .longcard-image img:hover {
-    -ms-transform: scale(1.5);
-    /* IE 9 */
-    -webkit-transform: scale(1.5);
-    /* Safari 3-8 */
     transform: scale(1.4);
 }
 

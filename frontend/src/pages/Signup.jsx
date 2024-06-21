@@ -16,8 +16,8 @@ export function Signup() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     return (
-        <div className="bg-slate-100 h-full flex justify-center items-center">
-            <div className="rounded-lg bg-white px-7 py-10 my-5 flex flex-col gap-4">
+        <div className="bg-white h-full flex justify-center items-center">
+            <div className="border-4 rounded-lg bg-white px-7 py-10 my-5 flex flex-col gap-4">
                 <button onClick={() => {
                     navigate(-1);
                 }}>{<IoIosArrowRoundBack size={30} />}</button>

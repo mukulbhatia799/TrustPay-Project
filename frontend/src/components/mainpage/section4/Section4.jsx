@@ -11,8 +11,10 @@ import payNowImg from '../../../images/pay-now.jpg'
 import payAndEnjoyImg from '../../../images/pay-and-enjoy.jpg'
 import paymentSuccessfulImg from '../../../images/paid-successfully-250.webp'
 import payWhileShoppingImg from '../../../images/pay-while-shopping.avif'
+import {data} from '../../../state'
 
 function Section4() {
+  const {megacard} = data;
   return (
     <section className='section4-wrapper'>
 
@@ -20,28 +22,7 @@ function Section4() {
 
       <div className='section4-container'>
 
-        <Megacard
-          iconURL={trustpayWalletImg}
-          iconLabel={"TrustPay Wallet"}
-          heading={"The Fastest Way to Pay In-store & Online."}
-          para={"Load up your TrustPay Wallet for free and make payments in a jiffy at over 21 million stores, websites and apps."}
-          sideImageURL={payAndEnjoyImg} />
-
-        <Megacard
-          iconURL={UpiMoneyTransferImg}
-          iconLabel={"UPI Money Transfer"}
-          heading={"Pay anyone directly from your bank account."}
-          para={"Pay anyone, everywhere. Make contactless & secure payments in-stores or online using TrustPay Wallet or Directly from your Bank Account. Plus, send & receive money from anyone."}
-          sideImageURL={paymentSuccessfulImg} />
-
-        <Megacard
-          iconURL={payNowImg}
-          iconLabel={""}
-          heading={"Want it? No more waiting for it."}
-          para={"With TrustPay Postpaid, your wishlist doesn't have to be on the waitlist. Shop for the things you want today and pay for them next month."}
-          sideImageURL={payWhileShoppingImg}
-          learn={true}
-          largeicon={true} />
+        {megacard.map((card, index) => <Megacard key={index} iconURL={card.iconURL} iconLabel={card.iconLabel} heading={card.heading} para={card.para} sideImageURL={card.sideImageURL} />)}
 
         <div className="mini-card-row">
           <Minicard

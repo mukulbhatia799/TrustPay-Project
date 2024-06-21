@@ -13,7 +13,7 @@ function Longcard({imgURL, heading, para}) {
 
         <p>{para}</p>
 
-        <div className='longcard-link'><a href="#">Learn more</a></div>
+        <div className='longcard-link hover:underline'><a href="#">Learn more</a></div>
       
     </div>
   )

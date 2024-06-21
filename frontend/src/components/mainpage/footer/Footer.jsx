@@ -1,6 +1,11 @@
 import React from 'react'
 import './Footer.css'
 import Accordion from './Accordion'
+import appleStoreDownloadImg from '../../../images/apple-store-download.svg'
+import playStoreDownloadImg from '../../../images/google-play-download.svg'
+import instagramImg from '../../../images/instagram-social-media.svg'
+import xImg from '../../../images/x-social-media.svg'
+import facebookImg from '../../../images/facebook-social-media.svg'
 
 function Footer() {
   return (
@@ -13,24 +18,24 @@ function Footer() {
           <div className="download-links">
             <h2>Download TrustPay App to Pay from anywhere</h2>
             <a href="#" className="appstore-link">
-              <img src="https://pwebassets.paytm.com/commonwebassets/paytmweb/footer/images/downloadApple.svg" alt="Apple App store image" />
+              <img src={appleStoreDownloadImg} alt="Apple App store image" />
             </a>
             <a href="#" className="googleplay-link">
-              <img src="https://pwebassets.paytm.com/commonwebassets/paytmweb/footer/images/downloadGoogle.svg" alt="Google Playstore image" />
+              <img src={playStoreDownloadImg} alt="Google Playstore image" />
             </a>
           </div>
 
           <div className="media-icons">
             <a href="" className="">
-              <img src="https://pwebassets.paytm.com/commonwebassets/paytmweb/footer/images/twitter.svg" alt="" />
+              <img src={xImg} alt="" />
             </a>
 
             <a href="" className="">
-              <img src="https://pwebassets.paytm.com/commonwebassets/paytmweb/footer/images/instagram.svg" alt="" />
+              <img src={instagramImg} alt="" />
             </a>
 
             <a href="" className="">
-              <img src="https://pwebassets.paytm.com/commonwebassets/paytmweb/footer/images/facebook.svg" alt="" />
+              <img src={facebookImg} alt="" />
             </a>
           </div>
 
