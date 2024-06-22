@@ -8,6 +8,7 @@ import Section6 from '../components/mainpage/section6/Section6'
 import Section7 from '../components/mainpage/section7/Section7'
 import Section8 from '../components/mainpage/section8/Section8'
 import Footer from '../components/mainpage/footer/Footer'
+import ScrollToTop from "react-scroll-to-top";
 
 export function MainPage() {
     return (
@@ -22,6 +23,7 @@ export function MainPage() {
             <Section7 />
             <Section8 />
             <Footer />
+            <ScrollToTop width="40px" style={{display:"flex", justifyContent:"center", alignItems:"center", backgroundColor:"var(--light-blue)",padding:"10px 10px", fontWeight:"bold"}} smooth />
         </>
     )
 }
