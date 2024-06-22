@@ -21,17 +21,9 @@
     background-color: rgba(184, 181, 181, 0.8);
 }
 
-.carousel .control-prev.control-arrow:hover {
+.carousel .control-prev.control-arrow:hover,
+.carousel .control-next.control-arrow:hover
+ {
     /* left: 15px; Adjust left position */
     background-color: rgba(39, 38, 38, 0.8);;
-}
-
-.carousel .control-next.control-arrow:hover {
-    /* right: 15px; Adjust right position */
-    background-color: rgba(39, 38, 38, 0.8);;
-}
-
-.carousel .control-arrow:before {
-    border-color: rgba(0, 0, 0, 0.8);
-    /* Dark arrow color */
 }
