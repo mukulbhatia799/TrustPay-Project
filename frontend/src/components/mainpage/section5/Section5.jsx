@@ -208,24 +208,27 @@ const CustomCarousel = () => {
     ];
 
     return (
-        <section className="bg-[#f5f7fa] relative flex justify-center items-center">
-            <div className="w-2/3 h-1/3 bg-white">
-                <Carousel className="w-full"
-                    showThumbs={false}
-                    infiniteLoop={true}
-                    autoPlay
-                    showStatus={false}
-                    showArrows={true}
-                    interval={4000}
-                >
-                    {slides.map((slide, index) => (
-                        <div className="px-24" key={index}>
-                            {slide}
-                        </div>
-                    ))}
-                </Carousel>
+        <div className="bg-[#f5f7fa]">
+            <h1 className="text-5xl mx-72">Financial Services by TrustPay</h1>
+            <div className=" relative flex flex-col justify-center items-center">
+                <div className="rounded-lg w-2/3 h-1/3 bg-white my-10">
+                    <Carousel className="w-full"
+                        showThumbs={false}
+                        infiniteLoop={true}
+                        autoPlay
+                        showStatus={false}
+                        showArrows={true}
+                        interval={3000}
+                    >
+                        {slides.map((slide, index) => (
+                            <div className="px-24" key={index}>
+                                {slide}
+                            </div>
+                        ))}
+                    </Carousel>
                 </div>
-        </section>
+            </div>
+        </div>
     );
 };
 
