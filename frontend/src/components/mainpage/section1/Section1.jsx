@@ -36,7 +36,7 @@ function Section1() {
                 </div>
 
                 <div className='section1-image'>
-                    <img src={logo2} />
+                    <img src={logo2}/>
                 </div>
 
             </div>

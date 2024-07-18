@@ -15,7 +15,7 @@ export function Signin() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     return (
-        <div className="bg-white h-full flex justify-center items-center">
+        <div className="bg-[#5CADFF] h-screen flex justify-center items-center">
             <div className="border-4 rounded-lg bg-white px-7 py-10 my-5 flex flex-col gap-4">
                 <button onClick={() => {
                     navigate(-1);

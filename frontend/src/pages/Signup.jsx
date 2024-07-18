@@ -17,7 +17,7 @@ export function Signup() {
     const [password, setPassword] = useState("");
     const [emailWarning, setEmailWarning] = useState("");
     return (
-        <div className="bg-white h-full flex justify-center items-center">
+        <div className="bg-[#5CADFF] h-full flex justify-center items-center">
             <div className="border-4 rounded-lg bg-white px-7 py-10 my-5 flex flex-col gap-4">
                 <button onClick={() => {
                     navigate(-1);
