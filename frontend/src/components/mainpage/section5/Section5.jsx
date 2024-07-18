@@ -208,7 +208,7 @@ const CustomCarousel = () => {
     ];
 
     return (
-        <div className="bg-[#f5f7fa]">
+        <div className="bg-[#5CADFF]">
             <h1 className="text-5xl mx-72">Financial Services by TrustPay</h1>
             <div className=" relative flex flex-col justify-center items-center">
                 <div className="rounded-lg w-2/3 h-1/3 bg-white my-10">

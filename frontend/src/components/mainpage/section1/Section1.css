@@ -1,5 +1,5 @@
 .section1-wrapper{
-    background-color: #fafafa;
+    background-color: #5CADFF;
 }
 
 .message{
@@ -7,7 +7,7 @@
     margin-inline: auto;
     text-align: center;
 
-    background-color: var(--gray);
+    background-color: #6db5fd;
     display: flex;
     justify-content: center;
     align-items: center;

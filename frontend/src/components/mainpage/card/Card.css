@@ -5,11 +5,11 @@
 
 .card-cont:hover{
     cursor: pointer;
-    background-color: #00afe3;
+    background-color: #0d3e80;
 }
 
 div[data-color="dark"]:hover{
-    background-color: #0d3e80;
+    background-color: #00B9F1;
 }
 
 .card-body{
