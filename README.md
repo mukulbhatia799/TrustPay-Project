@@ -1,3 +1,3 @@
 # In progress.
 
-## [Live Link](https://trustpay-website.netlify.app/)
+## [Live Link](https://trustpay-payment-app.netlify.app/)
