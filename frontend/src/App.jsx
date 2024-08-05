@@ -9,7 +9,7 @@ import { MainPage } from './pages/MainPage'
 function App() {
 
   return (
-    <>
+    <div className="bg-[#5CADFF]">
       <BrowserRouter>
         <Routes>
           <Route path='/signup' element={<Signup />} />
@@ -19,7 +19,7 @@ function App() {
           <Route path='/' element={<MainPage />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   )
 }
 

@@ -14,12 +14,12 @@ export function UserSearchAndDisplay() {
     }, [filter])
 
     return (
-        <div className="px-10">
+        <div className="px-10 h-fit bg-[#002E6E]">
             <div className="flex flex-col gap-4">
-                <div className="font-bold text-xl sm:text-2xl">Users</div>
+                <div className="text-white font-bold text-xl sm:text-2xl">Users</div>
                 <input onChange={(e) => {
                     setFilter(e.target.value);
-                }} className="rounded border font-medium border-black w-full py-2 px-3" placeholder="Search users..." />
+                }} className="rounded border font-medium border-black w-full py-2 px-3 text-xs sm:text-2xl" placeholder="Search users..." />
             </div>
             {users.length === 0 ?
                 <div className=" text-slate-400 bg-slate-200 text-5xl text-center place-content-center px-2 my-5 h-96">

@@ -6,10 +6,10 @@
     height: 30%;
 }
 
-.carousel .control-arrow:hover {
-    /* background-color: rgba(39, 38, 38, 0.8); */
-    /* Increase opacity on hover */
-}
+/* Increase opacity on hover */
+/* .carousel .control-arrow:hover {
+    background-color: rgba(39, 38, 38, 0.8);
+} */
 
 .carousel .control-prev.control-arrow {
     /* left: 15px; Adjust left position */

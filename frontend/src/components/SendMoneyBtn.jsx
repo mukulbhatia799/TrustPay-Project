@@ -5,6 +5,6 @@ export function SendMoneyBtn({ user }) {
     return (
         <button onClick={() => {
             navigate("/sendmoney?id=" + user._id + "&name=" + user.firstName + "-" + user.lastName);
-        }} className="rounded-lg bg-black font-semibold text-white px-4 py-2 text-sm">Send Money</button>
+        }} className="bg-[#2260c4] rounded-lg font-semibold text-white px-4 py-2 text-xs lg:text-2xl text-nowrap hover:opacity-90">Send Money</button>
     )
 }
