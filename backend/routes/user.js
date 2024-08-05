@@ -18,7 +18,7 @@ const signupBody = zod.object({
 router.post("/signup", async (req, res) => {
     const response = signupBody.safeParse(req.body)
     if (!response.success) {
-        // console.log(response.error.message);
+        console.log("error occured:signup: ", response.error.message);
         return res.status(411).json({ 
             message: JSON.stringify(response.error.issues)
         })
@@ -88,14 +88,14 @@ router.post("/signin", async (req, res) => {
 
         res.json({
             token: token,
-            message: "You just signed in!, when signed in token is again given to the user."
+            message: "You just signed in!, when signed in token is again given to the user/assigned to user."
         })
         return;
     }
 
-
     res.status(411).json({
-        message: "User not found!"
+        message: "User not found/password is incorrect.",
+        user
     })
 })
 
