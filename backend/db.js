@@ -1,8 +1,9 @@
 // backend/db.js
 const mongoose = require('mongoose');
-const express = require('express')
+const express = require('express');
+const {mongodbURL} = require('./config.js');
 
-mongoose.connect("mongodb+srv://mukulbhatia189:mukulbhatia189@cluster0.zg7kjju.mongodb.net/")
+mongoose.connect(mongodbURL);
 
 // Create a Schema for Users
 const userSchema = new mongoose.Schema({
