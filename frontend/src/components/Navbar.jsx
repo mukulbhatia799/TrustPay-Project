@@ -1,6 +1,6 @@
 import logo from "../images/main-logo.png";
 import personImg from "../images/person-image.jpg";
-import {useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
 // import Dropdown from './Dropdown.jsx'
 
 // export function Navbar() {
@@ -39,37 +39,42 @@ const Navbar = () => {
     <nav className="bg-blue-600 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div>
-          <img src={logo} alt="trustpay logo" className="w-20 sm:w-48" />
+          <Link to="/">
+            <img src={logo} alt="trustpay logo" className="w-20 sm:w-48" />
+          </Link>
         </div>
         <div className="relative flex gap-5 justify-center items-center">
-          <div className="text-xs sm:text-3xl">Hello, User</div>
+          <div className="text-xs sm:text-3xl">Hello, Username*</div>
           <button onClick={toggleDropdown} className="focus:outline-none">
             <img
               src={personImg}
               alt="Profile"
-              className="w-10 h-10 rounded-full object-cover hover:opacity-70"
+              className="w-10 h-10 rounded-full object-cover hover:opacity-90"
             />
           </button>
           {isOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2">
-              <a
-                href="#"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+            <div className="absolute right-0 mt-24 mr-10 w-48 bg-white rounded-md shadow-lg py-2">
+              <button 
+                onClick={() => {
+                  navigate("/dashboard");
+                }}
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full"
               >
                 Profile
-              </a>
-              <a
-                href="#"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+              </button>
+              <button onClick={() => {
+                navigate("/dashboard");
+              }}
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full"
               >
                 Settings
-              </a>
+              </button>
               <button
                 onClick={() => {
                   navigate("/");
                 }}
                 href="#"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full"
               >
                 Logout
               </button>

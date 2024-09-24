@@ -16,11 +16,12 @@ export function Signup() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [emailWarning, setEmailWarning] = useState("");
+    const [checkForEmptyField, setCheckForEmptyField] = useState(false);
     return (
         <div className="bg-[#5CADFF] h-full flex justify-center items-center">
             <div className="border-4 rounded-lg bg-white px-7 py-10 my-5 flex flex-col gap-4">
                 <button onClick={() => {
-                    navigate(-1);
+                    navigate("/");
                 }}>{<IoIosArrowRoundBack size={30} />}</button>
                 <img src={logo} alt="trust pay logo" width="400px" />
                 <Heading text={"Sign Up"} />
@@ -38,12 +39,17 @@ export function Signup() {
                     setPassword(e.target.value);
                 }} label={"Password"} />
                 <Button onClick={async () => {
-                    await axios.post("http://localhost:3000/api/v1/user/signup", {
-                        firstName,
-                        lastName,
-                        username,
-                        password
-                    })
+                    if(firstName === "" || lastName === "" || username === "" || password === "") {
+                        setCheckForEmptyField(true);
+                    }
+                    else {
+                        await axios
+                        .post("http://localhost:3000/api/v1/user/signup", {
+                            firstName,
+                            lastName,
+                            username,
+                            password
+                        })
                         .then(response => {
                             setEmailWarning("");
                             console.log("message: ", response.data.message);
@@ -55,7 +61,9 @@ export function Signup() {
                             setEmailWarning("Email already taken");
                             console.log("error occured: ", error.response.data.message);
                         })
+                    }
                 }} text="Sign Up" />
+                {checkForEmptyField ? <div className="text-red-600">All fields are required!</div> : <></>}
                 <WarningAtEnd text="Already have an account?" to="/signin" linkText="login" />
             </div>
         </div>

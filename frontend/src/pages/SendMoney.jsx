@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 export const SendMoney = () => {
+    console.log("change");
     const [queryparm] = useSearchParams();
     const receiverName = queryparm.get("name").split('-');
+    const receiverID = queryparm.get("id");
+    console.log("receiverID: ", receiverID);
+    const [amount, setAmount] = useState(0);
     const navigate = useNavigate();
     return <div className="flex justify-center h-screen bg-gray-100">
         <div className="h-full flex flex-col justify-center">
@@ -27,18 +32,24 @@ export const SendMoney = () => {
                         <div className="space-y-2">
                             <label
                                 className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                for="amount"
+                                // for="amount"
                             >
                                 Amount (in Rs)
                             </label>
                             <input
+                                onChange={() => {
+                                    setAmount(() => amount);
+                                    console.log("amount: ", amount);
+                                }}
                                 type="number"
                                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                                 id="amount"
                                 placeholder="Enter amount"
                             />
                         </div>
-                        <button className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-cyan-500 hover:opacity-70 text-white">
+                        <button onClick={() => {
+                            navigate("/dashboard");
+                        }} className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-cyan-500 hover:opacity-70 text-white">
                             Initiate Transfer
                         </button>
                     </div>

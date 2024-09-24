@@ -16,4 +16,3 @@ window.onload = (event) => {
         navItems.classList.toggle("show")
     })
 }
-
