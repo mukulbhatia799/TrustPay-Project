@@ -122,11 +122,12 @@ router.put("/", authMiddleware, async (req, res) => {
     })
 })
 
+// used for searching the user in dashboard page. 
 router.get("/bulk", async (req, res) => {
     const filter = req.query.filter || "";
 
     const users = await User.find({
-        $or: [{
+        $or: [{             // checks whether the input typed by user is either firstName or lastName or not. If filter is empty, return all users.
             firstName: {
                 "$regex": filter,
                 "$options": "i"
@@ -147,6 +148,35 @@ router.get("/bulk", async (req, res) => {
             _id: user._id
         }))
     })
+})
+
+router.get("/verifytoken", (req, res) => {
+    const token = req.query.jwtToken;
+    console.log(`token from req query: ${token}`);
+  
+    if (!token) {
+        return res.status(403).send('Token is required');
+    }
+  
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        console.log(`decoded jwt token: ${decoded.userId}`);
+        req.userId = decoded.userId;
+        console.log(`req.userId after creation: ${req.userId}`);  
+        const userId = req.userId;
+        res.status(200).json({userId});
+    } catch (error) {
+        return res.status(401).send('Invalid or expired token');
+    }
+})
+
+router.get("/finduser", async (req, res) => {
+    const id = req.query.id;
+
+    const user = await User.findById(id);
+    console.log(`user: ${user}`);
+
+    res.status(200).json({user});
 })
 
 module.exports = router;
