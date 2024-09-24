@@ -2,14 +2,14 @@ import { useState, useEffect } from "react"
 import { UserSendMoneyCard } from "./UserSendMoneyCard";
 import axios from 'axios'
 
-export function UserSearchAndDisplay() {
+export function UserSearchAndDisplay({loggedInUser}) {
     const [users, setUsers] = useState([]);
     const [filter, setFilter] = useState("");
 
     useEffect(() => {
         axios.get(`http://localhost:3000/api/v1/user/bulk?filter=${filter}`)
-            .then(response => {
-                setUsers(response.data.user);
+            .then((res) => {
+                setUsers(res.data.user);
             })
     }, [filter])
 
@@ -28,10 +28,10 @@ export function UserSearchAndDisplay() {
                 :
                 <div className="flex flex-col bg-slate-100 px-2 my-5 overflow-auto h-96">
                     {users.map((user, index) => {
-                        return <div key={index}>
-                            <UserSendMoneyCard key={user._id} user={user} />
-                            <hr className="border border-gray-300" />
-                        </div>
+                        return (user._id !== loggedInUser._id ? <div key={index}>
+                        <UserSendMoneyCard key={user._id} user={user} />
+                        <hr className="border border-gray-300" />
+                    </div> : <></>)
                     })}
                 </div>
             }

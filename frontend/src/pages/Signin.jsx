@@ -61,10 +61,12 @@ export function Signin() {
                 password,
               })
               .then((response) => {
+                console.log(response);
                 console.log(response.data.message);
                 console.log(response.data.token);
+                localStorage.setItem("token", `Bearer ${response.data.token}`);
                 navigate("/dashboard");
-              })
+              })  
               .catch((error) => {
                 setCheckForEmptyField(false);
                 setDisplayError(() => true);

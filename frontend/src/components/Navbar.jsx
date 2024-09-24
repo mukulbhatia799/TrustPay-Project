@@ -1,35 +1,14 @@
 import logo from "../images/main-logo.png";
 import personImg from "../images/person-image.jpg";
 import { Link, useNavigate } from "react-router-dom";
-// import Dropdown from './Dropdown.jsx'
-
-// export function Navbar() {
-//   return (
-//     <div>
-//       <div className="flex justify-between px-6 py-2 sm:py-10 text-lg  font-extrabold items-center sm:text-3xl sm:px-10 bg-[#2793FE]">
-//         <div>
-//           <img src={logo} alt="trustpay logo" className="w-20 sm:w-48" />
-//         </div>
-//         <div className="flex gap-2 items-center font-normal">
-//           <div className="text-xs sm:text-3xl">Hello, User</div>
-//           <div className="rounded-full bg-slate-400 w-10 h-10 flex justify-center items-center text-xs sm:text-3xl">
-//             U
-//           </div>
-//           {/* <Dropdown /> */}
-//         </div>
-//       </div>
-//       <hr />
-//     </div>
-//   );
-// }
-
-// components/Navbar.js
 
 import React, { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({firstName}) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+
+  console.log(`firstname: ${firstName}`);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -44,7 +23,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="relative flex gap-5 justify-center items-center">
-          <div className="text-xs sm:text-3xl">Hello, Username*</div>
+          <div className="text-xs sm:text-3xl">Hello, {firstName}</div>
           <button onClick={toggleDropdown} className="focus:outline-none">
             <img
               src={personImg}

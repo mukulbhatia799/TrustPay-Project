@@ -55,7 +55,7 @@ export function Signup() {
                             console.log("message: ", response.data.message);
                             console.log("token: ", response.data.token);
                             localStorage.setItem("token", `Bearer ${response.data.token}`);
-                            navigate('/dashboard');
+                            navigate("/dashboard");
                         })
                         .catch(error => {
                             setEmailWarning("Email already taken");

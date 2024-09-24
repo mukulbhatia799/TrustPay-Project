@@ -4,7 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 export const SendMoney = () => {
     console.log("change");
-    const [queryparm] = useSearchParams();
+    const [queryparm] = useSearchParams();      // get the params from search url.
     const receiverName = queryparm.get("name").split('-');
     const receiverID = queryparm.get("id");
     console.log("receiverID: ", receiverID);
@@ -16,7 +16,7 @@ export const SendMoney = () => {
                 className="border h-min text-card-foreground max-w-md p-4 space-y-8 w-96 bg-white shadow-lg rounded-lg"
             >
                 <button onClick={() => {
-                    navigate("/dashboard");
+                    navigate(-1);
                 }}>{<IoIosArrowRoundBack size={30} />}</button>
                 <div className="flex flex-col">
                     <h2 className="text-3xl font-bold text-center">Send Money To</h2>
