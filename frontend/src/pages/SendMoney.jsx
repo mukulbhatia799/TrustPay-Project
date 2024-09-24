@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import axios from "axios";
 
 export const SendMoney = () => {
     console.log("change");
+    const [checkInsufficientBal, setCheckInsufficientBal] = useState(false);
     const [queryparm] = useSearchParams();      // get the params from search url.
     const receiverName = queryparm.get("name").split('-');
     const receiverID = queryparm.get("id");
     console.log("receiverID: ", receiverID);
     const [amount, setAmount] = useState(0);
+    console.log("amount: ", amount);
     const navigate = useNavigate();
     return <div className="flex justify-center h-screen bg-gray-100">
         <div className="h-full flex flex-col justify-center">
@@ -37,9 +40,8 @@ export const SendMoney = () => {
                                 Amount (in Rs)
                             </label>
                             <input
-                                onChange={() => {
-                                    setAmount(() => amount);
-                                    console.log("amount: ", amount);
+                                onChange={(e) => {
+                                    setAmount(() => e.target.value);
                                 }}
                                 type="number"
                                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
@@ -47,8 +49,29 @@ export const SendMoney = () => {
                                 placeholder="Enter amount"
                             />
                         </div>
-                        <button onClick={() => {
-                            navigate("/dashboard");
+                        {checkInsufficientBal ? <div className="text-red-600">*Insufficient Balance</div> : <></>}
+                        <button onClick={async () => {
+                            await axios
+                                .post(`http://localhost:3000/api/v1/account/transfer`, 
+                                    {
+                                        amount: amount,
+                                        to: receiverID
+                                    },
+                                    {
+                                        headers: {
+                                            'Authorization': localStorage.getItem("token")  // sending current logged in user token
+                                        }
+                                    }
+                                )
+                                .then((response) => {
+                                    setCheckInsufficientBal(false);                                    
+                                    // navigate("/dashboard");
+                                    window.location.href = '/dashboard';  // Causes a full reload of the page, as we want to update the userBalance in dashboard page. So, if we use useNavigate(), then page doesn't loads instead only the part or components changes which are required. As we have used useEffect(, []) with emtpy[], so this only works when page loads. Thatswhy it's required to load the dashboard page.
+                                })
+                                .catch((err) => {
+                                    setCheckInsufficientBal(() => true);
+                                    console.log(err.response.data.message);
+                                })
                         }} className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-cyan-500 hover:opacity-70 text-white">
                             Initiate Transfer
                         </button>

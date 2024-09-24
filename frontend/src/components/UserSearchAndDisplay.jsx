@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { UserSendMoneyCard } from "./UserSendMoneyCard";
 import axios from 'axios'
 
-export function UserSearchAndDisplay({loggedInUser}) {
+export function UserSearchAndDisplay({loggedInUser, userBalance}) {
     const [users, setUsers] = useState([]);
     const [filter, setFilter] = useState("");
 

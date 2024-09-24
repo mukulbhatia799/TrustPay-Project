@@ -11,6 +11,7 @@ export function Dashboard() {
     const jwtToken = localStorage.getItem("token");
     console.log(`current logged in user ID: ${jwtToken}`);
 
+    // verifying jwtToken and getting token user data.
     useEffect(() => {
         axios
             .get(`http://localhost:3000/api/v1/user/verifytoken?jwtToken=${jwtToken.split(' ')[1]}`)
@@ -23,12 +24,13 @@ export function Dashboard() {
             })
     }, []);
 
+    // getting logged in user balance.
     useEffect(() => {
         axios
             .get(`http://localhost:3000/api/v1/account/balance`, {
                 headers: {
                     'Authorization': jwtToken,  // Example: Sending a JWT token
-                  }
+                }
             })
             .then((response) => {
                 setUserBalance(() => response.data.balance);
@@ -37,23 +39,12 @@ export function Dashboard() {
     }, []);
 
     console.log(`local storage token: ${localStorage.getItem("token")}`);
-
-    // useEffect(() => {
-    //     axios
-    //         .get(`http://localhost:3000/api/v1/account/balance`, {
-    //             params: {id: id}
-    //         })
-    //         .then((res) => {
-
-    //         })
-
-    // })
     
     return (
         <div className="h-screen flex flex-col gap-7">
             <Navbar firstName={loggedInUser.firstName}/>
             <Balance userBalance={userBalance} />
-            <UserSearchAndDisplay loggedInUser={loggedInUser} />
+            <UserSearchAndDisplay loggedInUser={loggedInUser} userBalance={userBalance} />
         </div>
     )
 }
