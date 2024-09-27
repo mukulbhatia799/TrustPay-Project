@@ -8,4 +8,4 @@ module.exports = {
 	JWT_SECRET: "mukul Secret",
 	PORT,
 	mongodbURL
-}
+} 
