@@ -50,6 +50,7 @@ const Navbar = ({firstName}) => {
               </button>
               <button
                 onClick={() => {
+                  localStorage.removeItem("token");
                   navigate("/");
                 }}
                 href="#"
