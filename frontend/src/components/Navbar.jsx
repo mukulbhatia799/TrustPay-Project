@@ -37,14 +37,14 @@ const Navbar = ({firstName}) => {
                 onClick={() => {
                   navigate("/dashboard");
                 }}
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full"
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-300 w-full"
               >
                 Profile
               </button>
               <button onClick={() => {
                 navigate("/dashboard");
               }}
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full"
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-300 w-full"
               >
                 Settings
               </button>
@@ -54,7 +54,7 @@ const Navbar = ({firstName}) => {
                   navigate("/");
                 }}
                 href="#"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full"
+                className="block px-4 py-2 text-gray-800 hover:bg-gray-300 w-full"
               >
                 Logout
               </button>
