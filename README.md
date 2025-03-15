@@ -41,7 +41,7 @@ TrustPay is a secure online payment platform that enables users to perform seaml
 6. Start the frontend server:  
    ```sh  
    cd ../frontend  
-   npm start  
+   npm run dev  
    ```  
 
 ## Tech Stack  
