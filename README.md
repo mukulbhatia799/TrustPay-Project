@@ -14,7 +14,7 @@ TrustPay is a secure online payment platform that enables users to perform seaml
 ## Installation  
 1. Clone the repository:  
    ```sh  
-   https://github.com/mukulbhatia799/TrustPay-Project.git  
+   git clone https://github.com/mukulbhatia799/TrustPay-Project.git  
    cd trustpay
    ```  
 
