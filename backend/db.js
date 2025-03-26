@@ -1,7 +1,9 @@
 // backend/db.js
 const mongoose = require('mongoose');
 const express = require('express');
-const {mongodbURL} = require('./config.js');
+require('dotenv').config();
+
+const mongodbURL = process.env.MONGODB_URL;
 
 mongoose.connect(mongodbURL);
 

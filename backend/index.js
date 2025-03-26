@@ -1,12 +1,14 @@
 // backend/index.js
+require('dotenv').config();
 const express = require('express');
 const cors = require("cors");
-const {PORT, mongodbURL} = require('./config.js');
 const mongoose = require('mongoose');
 const rootRouter = require("./routes/index");
 
-const app = express();
+const PORT = process.env.PORT || 3000;
+const mongodbURL = process.env.MONGODB_URL;
 
+const app = express();
 app.use(cors());
 app.use(express.json());
 
