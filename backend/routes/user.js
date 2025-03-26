@@ -157,7 +157,7 @@ router.get("/verifytoken", (req, res) => {
     if (!token) {
         return res.status(403).send('Token is required');
     }
-  
+
     try {
         const decoded = jwt.verify(token, JWT_SECRET);
         console.log(`decoded jwt token: ${decoded.userId}`);

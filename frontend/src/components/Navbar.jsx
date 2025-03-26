@@ -35,7 +35,7 @@ const Navbar = ({firstName}) => {
             <div className="absolute right-0 mt-24 mr-10 w-48 bg-white rounded-md shadow-lg py-2">
               <button 
                 onClick={() => {
-                  navigate("/dashboard");
+                  navigate("/profiledetails");
                 }}
                 className="block px-4 py-2 text-gray-800 hover:bg-gray-300 w-full"
               >

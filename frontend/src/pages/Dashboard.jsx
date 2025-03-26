@@ -4,8 +4,8 @@ import axios from "axios"
 import {Signup} from './Signup';
 import { useEffect, useState } from "react"
 import Navbar from "../components/Navbar"
-
 import { UserSearchAndDisplay } from "../components/UserSearchAndDisplay"
+
 export function Dashboard() {
     const navigate = useNavigate();
     const [loggedInUser, setLoggedInUser] = useState("");
@@ -38,7 +38,7 @@ export function Dashboard() {
             }
         }, []);
 
-        // getting logged in user balance.
+        // getting loggedIn user balance.
         useEffect(() => {
             try {
                 axios
