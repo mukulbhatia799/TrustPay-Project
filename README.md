@@ -84,7 +84,7 @@ TrustPay is a secure online payment platform that enables users to perform seaml
 4. Run the backend container:
 
    ```sh
-   docker run -p 5000:5000 trustpay-backend
+   docker run -p 3000:3000 trustpay-backend
    ```
 
 #### **Using Docker Compose**
