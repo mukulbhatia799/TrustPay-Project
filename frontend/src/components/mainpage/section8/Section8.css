@@ -4,30 +4,163 @@
 }
 
 .section8-container {
-    width: 70%;
+    width: 90%;
     margin-inline: auto;
-
     display: flex;
     flex-direction: column;
-    row-gap: 2rem;
-    /* border: 1px solid red; */
+    row-gap: 3rem;
 }
 
-.row1 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-
-    gap: 1rem;
-    margin-bottom: 4rem;
+/* Carousel styling */
+.carousel-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    position: relative;
 }
 
-.row2 {
-    /* display: flex;
-    flex-flow: row nowrap; */
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+.carousel-row {
+    position: relative;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    padding: 1rem 0;
+    width: 100%;
+    margin: 0 25px; /* Space for the buttons */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
 
-    gap: 1rem;
-    margin-bottom: 4rem;
+.carousel-row::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.carousel-overflow-container {
+    display: flex;
+    width: max-content;
+    padding-right: 20%; /* This creates space to show the next item partially */
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    width: 220px;
+    margin-right: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Only apply blur effect to the "peek" card that's partially visible */
+/* .carousel-item-peek {
+    filter: blur(2px);
+    opacity: 0.7;
+    transform: scale(0.95);
+} */
+
+.carousel-button {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    color: #1388fc;
+    transition: all 0.2s ease;
+}
+
+.carousel-button:hover:not(:disabled) {
+    background-color: #f5f5f5;
+    transform: scale(1.05);
+}
+
+.carousel-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.carousel-button-left {
+    left: -20px;
+}
+
+.carousel-button-right {
+    right: -20px;
+}
+
+/* Simplified indicators for showing page position */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 8px;
+}
+
+.carousel-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.carousel-indicator.active {
+    background-color: #1388fc;
+    transform: scale(1.2);
+}
+
+/* Make carousel responsive */
+@media (max-width: 1200px) {
+    .carousel-item {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section8-container {
+        width: 95%;
+    }
+    
+    .carousel-item {
+        width: 180px;
+    }
+    
+    .carousel-button {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-item {
+        width: 160px;
+    }
+    
+    .carousel-button {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .carousel-indicators {
+        gap: 5px;
+    }
+    
+    .carousel-indicator {
+        width: 6px;
+        height: 6px;
+    }
 }

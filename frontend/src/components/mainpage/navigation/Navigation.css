@@ -2,7 +2,7 @@
     padding-inline: 6rem;
     padding-block: 0.75rem;
     color: black;
-    background-color: #2793fe;
+    background-color: white;
     box-shadow: 0 2px 20px #88888844;
 
     display: flex;
@@ -33,12 +33,15 @@
     cursor: pointer;
 }
 
-/* .hamburger-nav:active{
-    box-shadow: inset 2px 2px 5px #555;
-} */
+/* Responsive logo styling */
+.logo {
+    display: flex;
+    align-items: center;
+}
 
 .logo > img{
     max-width: 175px;
+    height: auto;
 }
 
 .nav-items{
@@ -105,7 +108,8 @@
     }
 
     .logo > img{
-        max-width: 120px;
+        max-width: 100px; /* Smaller logo for mobile */
+        height: auto;
     }
 
     .nav-items{
@@ -121,10 +125,12 @@
         border-right: 1px solid var(--light-blue);
         
         padding-block: 2rem;
+        width: 250px;
 
-        transform: translateY(-10px);
+        transform: translateY(-100%);
         transition: all 300ms ease-in-out;
         opacity: 0;
+        visibility: hidden;
     }
 
     .nav-items > *{
@@ -135,10 +141,52 @@
     .nav-items.show{
         opacity: 1;
         transform: translateY(0);
+        visibility: visible;
     }
 
     .sign-in{
-        margin-inline-end: 1rem;
+        margin-inline-end: 0;
     }
 
+}
+
+/* Additional media query for very small devices */
+@media screen and (width <= 480px) {
+    .logo > img {
+        max-width: 80px; /* Even smaller for very small devices */
+    }
+    
+    .sign-in {
+        font-size: 0.9rem;
+        padding-inline-start: 0.75rem;
+    }
+}
+/* Replace your existing logo styling with this: */
+.logo > img {
+    max-width: 100px; /* Reduced from 175px for laptop view */
+    height: 100px;
+    transition: max-width 0.3s ease; /* Smooth transition when size changes */
+}
+
+/* Keep your existing media queries, but update the logo sizes */
+@media screen and (width <= 1024px) {
+    /* Your existing tablet/mobile styles */
+    .logo > img {
+        max-width: 100px;
+        height: auto;
+    }
+}
+
+/* Add an additional media query for larger screens */
+@media screen and (width >= 1440px) {
+    .logo > img {
+        max-width: 160px; /* Slightly larger for very large screens */
+    }
+}
+
+/* Your existing media query for small devices */
+@media screen and (width <= 480px) {
+    .logo > img {
+        max-width: 80px;
+    }
 }

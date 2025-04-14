@@ -1,58 +1,115 @@
+/* Longcard.css - Updated for better mobile display */
 .longcard-container {
-    /* border: 1px solid blue; */
-    padding-inline: 1rem;
-    border-radius: 20px;
-    margin-top: 60px;
+    padding: 1rem;
+    border-radius: 16px;
     background-color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.longcard-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.longcard-image {
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
 }
 
 .longcard-image img {
-    max-width: 100%;
-    /* aspect-ratio: 1; */
-    transition: transform .2s;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    margin-bottom: 2rem;
+    transition: transform 0.3s;
 }
 
 .longcard-image img:hover {
-    transform: scale(1.4);
+    transform: scale(1.1);
 }
 
 .longcard-container h1 {
-    width: 80%;
     margin: 0;
-    margin-bottom: 2rem;
-    font-size: 1.75rem;
-    /* border: 1px solid green; */
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.2;
 }
 
 .longcard-container p {
     margin: 0;
     margin-bottom: 1rem;
-    font-size: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    flex-grow: 1;
+    color: #444;
 }
 
 .longcard-link {
-    margin-bottom: 1rem;
+    margin-top: auto;
+    margin-bottom: 0.5rem;
 }
 
 .longcard-link a {
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #16478c;
     font-weight: bold;
+    display: inline-block;
+    transition: color 0.2s;
+}
+
+.longcard-link a:hover {
+    color: #5CADFF;
     text-decoration: underline;
 }
 
-@media screen and (width <=1024px) {
+@media screen and (max-width: 768px) {
     .longcard-container {
-        outline: 1px solid gray;
-        text-align: center;
-        padding-inline: 1rem;
+        padding: 0.75rem;
     }
-
+    
+    .longcard-image {
+        height: 120px;
+        margin-bottom: 1rem;
+    }
+    
     .longcard-container h1 {
-        width: 100%;
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .longcard-container p {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .longcard-container {
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .longcard-image {
+        height: 180px;
+    }
+    
+    .longcard-container h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .longcard-container p {
+        text-align: center;
+    }
+    
+    .longcard-link {
+        text-align: center;
     }
 }

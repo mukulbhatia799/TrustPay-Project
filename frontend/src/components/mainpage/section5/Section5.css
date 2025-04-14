@@ -1,35 +1,41 @@
-/* .section5-wrapper{
-    padding-bottom: 5rem;
-} */
-
-.section5-wrapper > h1{
-    margin-inline: auto;
-    margin-block-start: 6rem;
-    margin-block-end: 0;
-    width: 62.5%;
-
-    text-align: start;
-    font-size: 3rem;
-    /* border: 1px solid red; */
+/* Section5.css */
+.carousel-container {
+    position: relative;
 }
 
-.section5-container{
-    width: 62.5%;
-    margin-inline: auto;
-    margin-block: 0;
-
-    display: flex;
-    flex-direction: column;
-    /* border: 1px solid blue; */
+.carousel .slide {
+    background: white;
+    padding: 0;
 }
 
-@media screen and (width <= 1024px){
-    .section5-wrapper h1{
-        width: 90%;
-        font-size: 2.5rem;
+.carousel .control-dots {
+    margin: 16px 0;
+}
+
+.carousel .control-dots .dot {
+    box-shadow: none;
+    background: #ccc;
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+    margin: 0 6px;
+    transition: all 0.3s ease;
+}
+
+.carousel .control-dots .dot.selected {
+    background: #3b82f6;
+    transform: scale(1.25);
+}
+
+/* Add responsive adjustments */
+@media screen and (max-width: 768px) {
+    .carousel .slide {
+        padding: 0 8px;
     }
+}
 
-    .section5-container{
-        width: 90%;
+@media screen and (max-width: 480px) {
+    .carousel .control-arrow {
+        display: none;
     }
 }

@@ -10,8 +10,8 @@ function Card({ imgURL, cardMessage, bgcolor }) {
         <img src={imgURL} alt="Icon Image" className='card-img' />
         <div>
           <p>{cardMessage[0]}</p>
-          <p>{cardMessage[2] ? cardMessage[1] : cardMessage[1] + " >"}</p>
-          {cardMessage[2] ? <p>{cardMessage[2] + " >"}</p> : ""}
+          <p>{cardMessage[2] ? cardMessage[1] : cardMessage[1]}</p>
+          {cardMessage[2] ? <p>{cardMessage[2]}</p> : ""}
         </div>
       </a>
 

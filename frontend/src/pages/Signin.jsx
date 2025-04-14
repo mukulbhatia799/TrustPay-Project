@@ -5,6 +5,7 @@ import { Button } from "../components/Button";
 import { WarningAtEnd } from "../components/WarningAtEnd";
 import { useState } from "react";
 import axios from "axios";
+import { FiEye, FiEyeOff } from "react-icons/fi"
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import logo from "../images/main-logo.png";
@@ -15,6 +16,7 @@ export function Signin() {
   const [password, setPassword] = useState("");
   const [displayError, setDisplayError] = useState("");
   const [checkForEmptyField, setCheckForEmptyField] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="bg-[#5CADFF] h-screen flex justify-center items-center">
@@ -41,45 +43,60 @@ export function Signin() {
           placeholder={"mukulbhatia@example.com"}
         />
 
-        <Input
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          label={"Password"}
-        />
+        <div className="relative">
+          <Input
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            label={"Password"}
+            inputType={showPassword ? "text" : "password"}
+          />
+          <span
+            onClick={() => setShowPassword((prev) => !prev)}
+            className="absolute right-3 top-[38px] cursor-pointer text-xl text-gray-600"
+          >
+            {showPassword ? <FiEyeOff /> : <FiEye />}
+          </span>
+        </div>
 
         <Button
           onClick={async () => {
-            if(username === "" || password === "") {
+            if (username === "" || password === "") {
               setCheckForEmptyField(true);
               setDisplayError(() => false);
-            }
-            else {
+            } else {
               await axios
-              .post("http://localhost:3000/api/v1/user/signin", {
-                username,
-                password,
-              })
-              .then((response) => {
-                console.log(response);
-                console.log(response.data.message);
-                console.log(response.data.token);
-                localStorage.setItem("token", `Bearer ${response.data.token}`);
-                navigate("/dashboard");
-              })  
-              .catch((error) => {
-                setCheckForEmptyField(false);
-                setDisplayError(() => true);
-                console.log(error);
-                console.log(error.response.data.message);
-              });
+                .post("http://localhost:3000/api/v1/user/signin", {
+                  username,
+                  password,
+                })
+                .then((response) => {
+                  console.log(response);
+                  console.log(response.data.message);
+                  console.log(response.data.token);
+                  localStorage.setItem(
+                    "token",
+                    `Bearer ${response.data.token}`
+                  );
+                  navigate("/dashboard");
+                })
+                .catch((error) => {
+                  setCheckForEmptyField(false);
+                  setDisplayError(() => true);
+                  console.log(error);
+                  console.log(error.response.data.message);
+                });
             }
           }}
           text="Sign In"
         />
 
-        {checkForEmptyField ? <div className="text-red-600">All fields are required!</div> : <></>}
-        
+        {checkForEmptyField ? (
+          <div className="text-red-600">All fields are required!</div>
+        ) : (
+          <></>
+        )}
+
         {displayError ? (
           <div className="text-red-600">Error: Email/password is incorrect</div>
         ) : (

@@ -1,4 +1,5 @@
 .invest-container{
+    height: 250px;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;

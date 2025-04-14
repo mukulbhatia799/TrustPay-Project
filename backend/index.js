@@ -12,7 +12,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const paymentRoutes = require("./routes/paymentRoutes");
 app.use("/api/v1", rootRouter);
+app.use("/api/payment", paymentRoutes);
+
 
 mongoose
     .connect(mongodbURL)
